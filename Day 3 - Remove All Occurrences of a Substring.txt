@@ -1,0 +1,21 @@
+class Solution {
+public:
+
+    void remove(string &s, string &part){
+        int found=s.find(part);
+        if(found!=string::npos){
+            // part found in string so we erase function to erase this part in string 
+            s.erase(found,part.size());
+        }
+        else{
+            // if part is not find so we stop recursive call 
+            return;
+        }
+        remove(s,part);
+    }
+
+    string removeOccurrences(string s, string part) {
+        remove(s,part);
+        return s;
+    }
+};

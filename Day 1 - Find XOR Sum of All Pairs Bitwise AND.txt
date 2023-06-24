@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int getXORSum(vector<int>& arr1, vector<int>& arr2) {
+        // my approach 
+        // little tricky question
+        // instead ouu finding & of all we will find xor of two array and then we will find bitwise & of them 
+        // i will intialize a_Xor=arr1[0] and  b_Xor=arr2[0];
+        // now i will create a for loop which will run till ar1.size and update a_Xor=a_Xor^arr1[i]
+        // now i will create a for loop which will run till ar2.size and update b_Xor=b_Xor^arr2[i]
+        // then i will return a_Xor & b_Xor;
+        int a_Xor=arr1[0];
+        int b_Xor=arr2[0];
+        for(int i=1; i<arr1.size(); i++){
+            a_Xor=a_Xor^arr1[i];
+        }
+        for(int i=1; i<arr2.size(); i++){
+            b_Xor=b_Xor^arr2[i];
+        }
+        return a_Xor & b_Xor;
+    }
+};

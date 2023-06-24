@@ -1,0 +1,32 @@
+class Solution {
+public:
+    string addRecursively(string &num1, int ptr1, string &num2, int ptr2, int carry = 0) {
+        // Base case
+        if (ptr1 < 0 && ptr2 < 0) {
+            if (carry != 0) {
+                return string(1, carry + '0');
+            }
+            return "";
+        }
+
+        // 1 case hum solve karenge baki case recursion dekh lega
+        int n1 = (ptr1 >= 0 ? num1[ptr1] - '0' : 0);
+        int n2 = (ptr2 >= 0 ? num2[ptr2] - '0' : 0);
+        int sum = n1 + n2 + carry;
+        int digit = sum % 10;
+        int newCarry = sum / 10;
+
+        string ans = "";
+        ans.push_back(digit + '0');
+
+         // recursively calling function
+        ans += addRecursively(num1, ptr1 - 1, num2, ptr2 - 1, newCarry);
+        return ans;
+    }
+
+    string addStrings(string num1, string num2) {
+        string ans = addRecursively(num1, num1.size() - 1, num2, num2.size() - 1);
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};
