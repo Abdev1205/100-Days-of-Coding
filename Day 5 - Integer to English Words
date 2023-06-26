@@ -1,0 +1,41 @@
+class Solution
+{
+public:
+  vector<pair<int, string>> mp = {{1000000000, "Billion"}, {1000000, "Million"}, {1000, "Thousand"}, {100, "Hundred"}, {90, "Ninety"}, {80, "Eighty"}, {70, "Seventy"}, {60, "Sixty"}, {50, "Fifty"}, {40, "Forty"}, {30, "Thirty"}, {20, "Twenty"}, {19, "Nineteen"}, {18, "Eighteen"}, {17, "Seventeen"}, {16, "Sixteen"}, {15, "Fifteen"}, {14, "Fourteen"}, {13, "Thirteen"}, {12, "Twelve"}, {11, "Eleven"}, {10, "Ten"}, {9, "Nine"}, {8, "Eight"}, {7, "Seven"}, {6, "Six"}, {5, "Five"}, {4, "Four"}, {3, "Three"}, {2, "Two"}, {1, "One"}};
+
+  string numberToWords(int num)
+  {
+    // base case
+    if (num == 0)
+    {
+      return "Zero";
+    }
+    for (auto it : mp)
+    {
+      // choosing number that is just bigger smaller than num
+      if (num >= it.first)
+      {
+        string a = "";
+        // here we are checking how much hundred ,thousand ,million ,billion and
+        // then we will store that value in a
+        if (num >= 100)
+        {
+          a = numberToWords(num / it.first) + " ";
+        }
+        // if num is less than 100 so we have key value for all value that just smaller than num
+        // so we ill store directlty tha value of that key in b variable
+        string b = it.second;
+        // this c variable is created for finding third part that is remainder part
+        // will find remainder of the num and and call the same function to find its english words
+        string c = "";
+        if (num % it.first != 0)
+        {
+          c = " " + numberToWords(num % it.first);
+        }
+        // at the last we will add all this abc to make full english words
+        return a + b + c;
+      }
+    }
+    return "";
+  }
+};
