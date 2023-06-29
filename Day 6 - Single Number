@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        // my algo 
+        // our main aim to find unique element in an array
+        // so I will intilaize unique be 0 
+        // and then i will apply bitwise operator to find unique and store in unique variable
+        // if we found any unique value then we  will store that value in unique vatiable
+        int unique =0;
+        for(int i=0; i<nums.size();i++){
+            unique= unique ^ nums[i];
+        }
+        return unique;
+    }
+};
