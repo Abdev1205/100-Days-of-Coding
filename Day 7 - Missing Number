@@ -1,0 +1,35 @@
+class Solution
+{
+public:
+  int missingNumber(vector<int> &nums)
+  {
+    // Sort the input vector in ascending order
+    sort(nums.begin(), nums.end());
+
+    // Initialize variables to traverse the vector
+    int start = 0;
+    int end = nums.size() - 1;
+    int mid = start + (end - start) / 2;
+    // Binary search for the missing number
+    while (start <= end)
+    {
+      // Calculate the middle index of the search interval
+      // If the middle element is greater than the middle index,
+      // the missing number must be in the left half of the interval
+      if (nums[mid] > mid)
+      {
+        end = mid - 1; // Update the end index
+      }
+      // If the middle element is less than or equal to the middle index,
+      // the missing number must be in the right half of the interval
+      else
+      {
+        start = mid + 1; // Update the start index
+      }
+      mid = start + (end - start) / 2;
+    }
+
+    // Return the start index, which contains the missing number
+    return start;
+  }
+};
