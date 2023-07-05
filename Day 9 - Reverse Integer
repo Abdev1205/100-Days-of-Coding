@@ -1,0 +1,28 @@
+class Solution
+{
+public:
+  int reverse(int x)
+  {
+    // my approach
+    // first i will intialize ans = 0;
+    // and int i=0
+    // now i will create a loop which will run till x!=0
+    // if ((ans > INT_MAX/ 10) || (ans < INT_MIN/ 10)) which means that no is out of bound so we will return 0
+    // we will update ans = ans *10 + digit
+    // we will update x = x/10;
+    int ans = 0;
+    int i = 0;
+    while (x != 0)
+    {
+      int digit = x % 10;
+      if ((ans > INT_MAX / 10) || (ans < INT_MIN / 10))
+      {
+        return 0;
+      }
+      ans = (ans * 10) + digit;
+      x = x / 10;
+      i++;
+    }
+    return ans;
+  }
+};

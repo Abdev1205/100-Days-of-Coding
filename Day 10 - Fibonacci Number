@@ -1,0 +1,23 @@
+class Solution
+{
+public:
+  int fib(int n)
+  {
+    // my approach
+    // i am going to use recursion because of #practice
+    // base case to stop recusrion
+    if (n == 0)
+    {
+      // first term
+      return 0;
+    }
+    if (n == 1)
+    {
+      // second term
+      return 1;
+    }
+    // recursive relation
+    int ans = fib(n - 1) + fib(n - 2);
+    return ans;
+  }
+};
