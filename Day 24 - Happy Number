@@ -1,0 +1,34 @@
+class Solution
+{
+public:
+  int calculateSquareSum(int n)
+  {
+    int sum = 0;
+    while (n > 0)
+    {
+      int digit = n % 10;
+      sum += digit * digit;
+      n /= 10;
+    }
+    return sum;
+  }
+
+  bool checkHappy(int n)
+  {
+    if (n == 1)
+    {
+      return true;
+    }
+    if (n == 4)
+    {
+      return false;
+    }
+    int nextSum = calculateSquareSum(n);
+    return checkHappy(nextSum);
+  }
+
+  bool isHappy(int n)
+  {
+    return checkHappy(n);
+  }
+};
